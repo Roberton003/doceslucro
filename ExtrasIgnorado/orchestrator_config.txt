@@ -1,0 +1,74 @@
+# config.yaml - Configuração do Orquestrador Copilot-Qwen
+
+orchestrator:
+  name: "Copilot Orchestrator"
+  version: "1.0.0"
+  
+qwen:
+  # Caminho para o executável do Qwen CLI
+  cli_path: "qwen"
+  
+  # Configurações de API (alternativa ao CLI)
+  api:
+    enabled: false
+    endpoint: "http://localhost:8000"
+    timeout: 60
+    retry_attempts: 3
+  
+  # Configurações padrão para execução
+  defaults:
+    temperature: 0.7
+    max_tokens: 2000
+    top_p: 0.9
+    
+  # Limites de execução
+  limits:
+    max_concurrent_tasks: 3
+    task_timeout: 120
+    queue_size: 50
+
+# Mapeamento de tipos de tarefa para configurações específicas
+task_configs:
+  code_generation:
+    temperature: 0.7
+    max_tokens: 3000
+    system_prompt: "Você é um expert em programação. Gere código limpo e eficiente."
+    
+  code_review:
+    temperature: 0.3
+    max_tokens: 2000
+    system_prompt: "Você é um revisor de código experiente. Analise criticamente."
+    
+  documentation:
+    temperature: 0.5
+    max_tokens: 2500
+    system_prompt: "Você é um documentador técnico. Seja claro e completo."
+    
+  analysis:
+    temperature: 0.4
+    max_tokens: 3000
+    system_prompt: "Você é um analista. Forneça insights profundos."
+    
+  translation:
+    temperature: 0.3
+    max_tokens: 2000
+    system_prompt: "Você é um tradutor técnico. Mantenha precisão."
+
+# Estratégias de retry em caso de falha
+retry:
+  enabled: true
+  max_attempts: 3
+  backoff_multiplier: 2
+  initial_delay: 1
+
+# Logging
+logging:
+  level: "INFO"
+  format: "json"
+  file: "orchestrator.log"
+  
+# Métricas e monitoramento
+monitoring:
+  enabled: true
+  metrics_file: "metrics.json"
+  track_performance: true
