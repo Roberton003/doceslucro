@@ -164,19 +164,20 @@ const RecipeForm = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(recipeData)
         })
-        const updated = await res.json()
-        console.log('Receita atualizada (server):', updated)
-        // navigate to the updated recipe detail page so the user sees the saved data
-        navigate(`/recipes/${updated.id || id}`)
+  const updated = await res.json()
+  console.log('Receita atualizada (server):', updated)
+  // navigate to the updated recipe detail page and pass the updated object
+  // so the detail page can show changes immediately while it re-fetches
+  navigate(`/recipes/${updated.id || id}`, { state: { product: updated } })
       } else {
         const res = await fetch('/api/products/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(recipeData)
         })
-        const created = await res.json()
-        console.log('Receita criada (server):', created)
-        navigate(`/recipes/${created.id}`)
+  const created = await res.json()
+  console.log('Receita criada (server):', created)
+  navigate(`/recipes/${created.id}`, { state: { product: created } })
       }
 
       // navigation already performed above
