@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "core.middleware.SecurityMiddleware",  # Middleware de segurança personalizado
     "core.middleware.RateLimitMiddleware",  # Rate limiting adicional
