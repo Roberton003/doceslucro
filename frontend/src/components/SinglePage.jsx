@@ -685,7 +685,7 @@ const SinglePage = () => {
           {/* Título e descrição no centro */}
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-900 to-orange-700 mb-2" style={{ fontFamily: "'Georgia', serif" }}>
-              ☕ Doces Lucros Luz
+              Doces Lucros Luz
             </h1>
             <p className="text-base md:text-lg text-amber-800 font-medium">Calculadora de Custos e Margem de Lucro</p>
           </div>
