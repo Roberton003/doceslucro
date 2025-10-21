@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import logoBrand from '../assets/logo-brand.png'
 
 // Receitas pré-cadastradas com dados de teste
 const RECEITAS_PADRAO = [
@@ -671,16 +672,28 @@ const SinglePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 p-6 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8 flex items-start justify-between gap-4">
-          <div>
+        <div className="mb-8 flex items-center justify-between gap-6">
+          {/* Imagem no lado esquerdo */}
+          <div className="flex-shrink-0">
+            <img 
+              src={logoBrand} 
+              alt="Doces Lucros Luz" 
+              className="h-24 md:h-32 w-auto rounded-lg shadow-md hover:shadow-lg transition"
+            />
+          </div>
+          
+          {/* Título e descrição no centro */}
+          <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-900 to-orange-700 mb-2" style={{ fontFamily: "'Georgia', serif" }}>
               ☕ Doces Lucros Luz
             </h1>
             <p className="text-base md:text-lg text-amber-800 font-medium">Calculadora de Custos e Margem de Lucro</p>
           </div>
+          
+          {/* Botão no lado direito */}
           <button
             onClick={handlePrint}
-            className="px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition flex items-center gap-2 whitespace-nowrap mt-2"
+            className="px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition flex items-center gap-2 whitespace-nowrap flex-shrink-0"
           >
             <span>🖨️</span>
             <span className="hidden sm:inline">Imprimir</span>
