@@ -2,8 +2,9 @@
 
 [![Django](https://img.shields.io/badge/Django-5.2.7-green.svg)](https://djangoproject.com/)
 [![React](https://img.shields.io/badge/React-18.3.1-blue.svg)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.4.20-646CFF.svg)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.11-646CFF.svg)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.18-38B2AC.svg)](https://tailwindcss.com/)
+[![Security](https://img.shields.io/badge/Security-0%20Vulns-brightgreen.svg)](./SECURITY_REPORT_20OCT2025.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > Sistema completo de gestão para confeitarias com controle de custos, ingredientes, produtos e dashboard analítico.
@@ -60,11 +61,11 @@ Doces GIamor/
 
 ### Frontend
 - **React 18.3.1** - Biblioteca JavaScript para interfaces
-- **Vite 5.4.20** - Build tool ultrarrápido
+- **Vite 7.1.11** - Build tool ultrarrápido (atualizado para segurança)
 - **Tailwind CSS 3.4.18** - Framework CSS utilitário
 - **React Router DOM** - Roteamento SPA
 - **Axios** - Cliente HTTP para APIs
-- **jsPDF** - Geração de relatórios em PDF
+- **jsPDF 3.0.1+** - Geração de relatórios em PDF (atualizado para segurança)
 
 ### DevOps & Qualidade
 - **Docker** - Containerização
@@ -148,6 +149,7 @@ npm run test         # Executa testes
 
 O sistema implementa múltiplas camadas de segurança:
 
+- ✅ **0 Vulnerabilidades** npm audit (atualizado em 20/10/2025)
 - ✅ **SECRET_KEY** via variáveis de ambiente
 - ✅ **Rate Limiting** (100 req/hora anônimos, 1000 req/hora usuários)
 - ✅ **Headers de Segurança** (HSTS, CSP, X-Frame-Options)
@@ -155,8 +157,16 @@ O sistema implementa múltiplas camadas de segurança:
 - ✅ **Validação de entrada** rigorosa
 - ✅ **Middleware de segurança** personalizado
 - ✅ **Logs de auditoria** para atividades suspeitas
+- ✅ **Proteção XSS** (nenhum innerHTML)
+- ✅ **Proteção CSRF** com tokens
+- ✅ **Proteção SQL Injection** (ORM Django)
 
-Para mais detalhes, consulte [`backend/SECURITY_README.md`](backend/SECURITY_README.md).
+📋 **Relatório Completo**: Veja [`SECURITY_REPORT_20OCT2025.md`](./SECURITY_REPORT_20OCT2025.md)
+
+### Histórico de Correções (20/10/2025)
+- **jsPDF** < 3.0.1: ReDoS vulnerability (CRITICAL) → ✅ CORRIGIDO
+- **Vite** 5.2.6-5.4.20: Path traversal no Windows → ✅ CORRIGIDO
+- **Dependências transitivas**: Esbuild, DOMPurify, Playwright → ✅ CORRIGIDO
 
 ## 📚 Documentação da API
 
