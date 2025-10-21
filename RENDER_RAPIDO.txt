@@ -1,0 +1,58 @@
+# 🚀 RENDER DEPLOY - RESUMO RÁPIDO
+
+## 📋 3 PASSOS PRINCIPAIS
+
+### 1️⃣ ACESSAR RENDER
+```
+https://render.com
+→ Sign up com GitHub (Roberton003)
+→ Authorize
+```
+
+### 2️⃣ CONECTAR REPOSITÓRIO
+```
+New Web Service
+→ Procure: doceslucro
+→ Connect
+```
+
+### 3️⃣ CONFIGURAR E DEPLOY
+```
+Build Command:
+  chmod +x render-build.sh && ./render-build.sh
+
+Start Command:
+  cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:10000
+
+Variáveis:
+  DEBUG = False
+  ALLOWED_HOSTS = doces-lucros-luz.onrender.com
+  SECRET_KEY = [gerar com: python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())']
+  PYTHON_VERSION = 3.11.7
+
+Plan: FREE
+→ Create Web Service
+```
+
+---
+
+## ✅ RESULTADO
+
+```
+🌍 https://doces-lucros-luz.onrender.com
+```
+
+**5-10 minutos depois sua app está online!** 🎉
+
+---
+
+## 📚 DOCUMENTOS
+
+- **RENDER_CHECKLIST.md** - Passo-a-passo interativo
+- **RENDER_DEPLOY_COMPLETO.md** - Guia detalhado com troubleshooting
+
+---
+
+**Status**: ✅ Pronto para deploy
+**Arquivo**: Tudo commitado em `918cd39`
+**Próximo**: Abrir https://render.com
