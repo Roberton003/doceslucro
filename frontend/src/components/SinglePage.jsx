@@ -7,6 +7,12 @@ const RECEITAS_PADRAO = [
     name: 'Bolo de Cenoura',
     rendimento: 10,
     margemLucro: 50,
+    packaging: {
+      description: 'Caixa individual',
+      quantity_used: 1,
+      package_size: 50,
+      price_per_package: 40.00
+    },
     ingredients: [
       { name: 'Cenoura', quantity_used: 300, unit: 'g', price_per_package: 2.50, package_size: 1000 },
       { name: 'Farinha de trigo', quantity_used: 300, unit: 'g', price_per_package: 8.00, package_size: 1000 },
@@ -20,6 +26,12 @@ const RECEITAS_PADRAO = [
     name: 'Brownie',
     rendimento: 12,
     margemLucro: 50,
+    packaging: {
+      description: 'Caixa pequena',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 75.00
+    },
     ingredients: [
       { name: 'Chocolate 70%', quantity_used: 200, unit: 'g', price_per_package: 18.00, package_size: 500 },
       { name: 'Manteiga', quantity_used: 150, unit: 'g', price_per_package: 8.00, package_size: 500 },
@@ -33,6 +45,12 @@ const RECEITAS_PADRAO = [
     name: 'Quindim',
     rendimento: 10,
     margemLucro: 50,
+    packaging: {
+      description: 'Caixa de papel',
+      quantity_used: 1,
+      package_size: 80,
+      price_per_package: 48.00
+    },
     ingredients: [
       { name: 'Açúcar', quantity_used: 500, unit: 'g', price_per_package: 3.50, package_size: 1000 },
       { name: 'Ovos', quantity_used: 12, unit: 'un', price_per_package: 12.00, package_size: 12 },
@@ -45,6 +63,12 @@ const RECEITAS_PADRAO = [
     name: 'Pavê',
     rendimento: 8,
     margemLucro: 50,
+    packaging: {
+      description: 'Pote plástico',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 120.00
+    },
     ingredients: [
       { name: 'Biscoito de polvilho', quantity_used: 200, unit: 'g', price_per_package: 4.00, package_size: 500 },
       { name: 'Leite condensado', quantity_used: 395, unit: 'g', price_per_package: 3.00, package_size: 395 },
@@ -57,6 +81,12 @@ const RECEITAS_PADRAO = [
     name: 'Brigadeiro',
     rendimento: 24,
     margemLucro: 50,
+    packaging: {
+      description: 'Papel de brigadeiro',
+      quantity_used: 1,
+      package_size: 500,
+      price_per_package: 125.00
+    },
     ingredients: [
       { name: 'Leite condensado', quantity_used: 395, unit: 'g', price_per_package: 3.00, package_size: 395 },
       { name: 'Chocolate em pó', quantity_used: 50, unit: 'g', price_per_package: 6.00, package_size: 200 },
@@ -68,6 +98,12 @@ const RECEITAS_PADRAO = [
     name: 'Pastel de Nata',
     rendimento: 12,
     margemLucro: 60,
+    packaging: {
+      description: 'Caixa de papel',
+      quantity_used: 1,
+      package_size: 60,
+      price_per_package: 54.00
+    },
     ingredients: [
       { name: 'Folha de massa folhada', quantity_used: 300, unit: 'g', price_per_package: 12.00, package_size: 500 },
       { name: 'Leite condensado', quantity_used: 200, unit: 'g', price_per_package: 3.00, package_size: 395 },
@@ -81,6 +117,12 @@ const RECEITAS_PADRAO = [
     name: 'Bolo de Rolo',
     rendimento: 8,
     margemLucro: 55,
+    packaging: {
+      description: 'Caixa média',
+      quantity_used: 1,
+      package_size: 50,
+      price_per_package: 55.00
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 300, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Açúcar', quantity_used: 250, unit: 'g', price_per_package: 3.50, package_size: 1000 },
@@ -95,6 +137,12 @@ const RECEITAS_PADRAO = [
     name: 'Pudim',
     rendimento: 10,
     margemLucro: 50,
+    packaging: {
+      description: 'Pote de vidro',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 150.00
+    },
     ingredients: [
       { name: 'Leite condensado', quantity_used: 395, unit: 'g', price_per_package: 3.00, package_size: 395 },
       { name: 'Leite integral', quantity_used: 400, unit: 'ml', price_per_package: 4.50, package_size: 1000 },
@@ -108,6 +156,12 @@ const RECEITAS_PADRAO = [
     name: 'Bolinho de Chuva',
     rendimento: 20,
     margemLucro: 60,
+    packaging: {
+      description: 'Saco de papel kraft',
+      quantity_used: 1,
+      package_size: 500,
+      price_per_package: 175.00
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 200, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Açúcar', quantity_used: 150, unit: 'g', price_per_package: 3.50, package_size: 1000 },
@@ -122,6 +176,12 @@ const RECEITAS_PADRAO = [
     name: 'Sonho de Creme',
     rendimento: 16,
     margemLucro: 65,
+    packaging: {
+      description: 'Caixa pequena de papel',
+      quantity_used: 1,
+      package_size: 80,
+      price_per_package: 68.00
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 250, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Leite', quantity_used: 300, unit: 'ml', price_per_package: 4.50, package_size: 1000 },
@@ -134,8 +194,14 @@ const RECEITAS_PADRAO = [
   {
     id: 11,
     name: 'Bomba de Chocolate',
-    rendimiento: 12,
+    rendimento: 12,
     margemLucro: 70,
+    packaging: {
+      description: 'Caixa de doces',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 135.00
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 200, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Leite', quantity_used: 250, unit: 'ml', price_per_package: 4.50, package_size: 1000 },
@@ -150,6 +216,12 @@ const RECEITAS_PADRAO = [
     name: 'Brigadeiro Gourmet',
     rendimento: 30,
     margemLucro: 80,
+    packaging: {
+      description: 'Papel especial',
+      quantity_used: 1,
+      package_size: 1000,
+      price_per_package: 300.00
+    },
     ingredients: [
       { name: 'Leite condensado de qualidade', quantity_used: 395, unit: 'g', price_per_package: 3.50, package_size: 395 },
       { name: 'Chocolate em pó 70%', quantity_used: 80, unit: 'g', price_per_package: 12.00, package_size: 200 },
@@ -162,6 +234,12 @@ const RECEITAS_PADRAO = [
     name: 'Pão de Mel',
     rendimento: 20,
     margemLucro: 60,
+    packaging: {
+      description: 'Caixa média de papel',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 95.00
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 400, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Mel', quantity_used: 200, unit: 'g', price_per_package: 15.00, package_size: 500 },
@@ -177,6 +255,12 @@ const RECEITAS_PADRAO = [
     name: 'Cannoli Siciliano',
     rendimento: 16,
     margemLucro: 75,
+    packaging: {
+      description: 'Caixa decorada',
+      quantity_used: 1,
+      package_size: 50,
+      price_per_package: 62.50
+    },
     ingredients: [
       { name: 'Farinha de trigo', quantity_used: 300, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Vinho tinto', quantity_used: 100, unit: 'ml', price_per_package: 12.00, package_size: 750 },
@@ -192,6 +276,12 @@ const RECEITAS_PADRAO = [
     name: 'Geleia Caseira',
     rendimento: 6,
     margemLucro: 120,
+    packaging: {
+      description: 'Pote de vidro 250ml',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 180.00
+    },
     ingredients: [
       { name: 'Fruta (morango/amora)', quantity_used: 1000, unit: 'g', price_per_package: 10.00, package_size: 1000 },
       { name: 'Açúcar', quantity_used: 800, unit: 'g', price_per_package: 3.50, package_size: 1000 },
@@ -203,6 +293,12 @@ const RECEITAS_PADRAO = [
     name: 'Compota de Frutas',
     rendimento: 8,
     margemLucro: 100,
+    packaging: {
+      description: 'Pote de vidro 300ml',
+      quantity_used: 1,
+      package_size: 100,
+      price_per_package: 170.00
+    },
     ingredients: [
       { name: 'Fruta (maçã/pêra/pêssego)', quantity_used: 1000, unit: 'g', price_per_package: 8.00, package_size: 1000 },
       { name: 'Açúcar', quantity_used: 500, unit: 'g', price_per_package: 3.50, package_size: 1000 },
@@ -226,6 +322,12 @@ const SinglePage = () => {
   const [ingredients, setIngredients] = useState([])
   const [rendimento, setRendimento] = useState(10)
   const [margemLucro, setMargemLucro] = useState(50)
+  const [packaging, setPackaging] = useState({
+    description: 'Caixa individual',
+    quantity_used: 1,
+    package_size: 50,
+    price_per_package: 40.00
+  })
   const [errors, setErrors] = useState({})
 
   // Adicionar nova receita
@@ -236,6 +338,12 @@ const SinglePage = () => {
       name: 'Nova Receita',
       rendimento: 1,
       margemLucro: 50,
+      packaging: {
+        description: '',
+        quantity_used: 1,
+        package_size: 50,
+        price_per_package: 0
+      },
       ingredients: []
     }
     RECEITAS_PADRAO.push(newRecipe)
@@ -244,6 +352,7 @@ const SinglePage = () => {
     setIngredients([])
     setRendimento(1)
     setMargemLucro(50)
+    setPackaging({ description: '', quantity_used: 1, package_size: 50, price_per_package: 0 })
     setErrors({})
   }
 
@@ -255,6 +364,7 @@ const SinglePage = () => {
       setIngredients([...recipe.ingredients])
       setRendimento(recipe.rendimento)
       setMargemLucro(recipe.margemLucro)
+      setPackaging({ ...recipe.packaging })
       setErrors({})
     }
   }, [selectedRecipeId])
@@ -281,6 +391,18 @@ const SinglePage = () => {
     })
     if (!rendimento || rendimento <= 0) {
       newErrors['rendimento'] = 'Rendimento obrigatório e deve ser > 0'
+    }
+    if (!packaging.description.trim()) {
+      newErrors['packaging_description'] = 'Descrição da embalagem obrigatória'
+    }
+    if (packaging.quantity_used <= 0) {
+      newErrors['packaging_quantity'] = 'Quantidade de embalagem deve ser > 0'
+    }
+    if (packaging.package_size <= 0) {
+      newErrors['packaging_package_size'] = 'Tamanho do pacote deve ser > 0'
+    }
+    if (packaging.price_per_package < 0) {
+      newErrors['packaging_price'] = 'Preço não pode ser negativo'
     }
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -320,7 +442,9 @@ const SinglePage = () => {
   }
 
   // Cálculos - Preço = (Quantidade Usada / Tamanho do Pacote) * Preço do Pacote
-  const custoTotal = ingredients.reduce((sum, ing) => sum + ((ing.quantity_used / ing.package_size) * ing.price_per_package), 0)
+  const custoIngredientes = ingredients.reduce((sum, ing) => sum + ((ing.quantity_used / ing.package_size) * ing.price_per_package), 0)
+  const custoEmbalagem = (packaging.quantity_used / packaging.package_size) * packaging.price_per_package
+  const custoTotal = custoIngredientes + custoEmbalagem
   const custoPorUnidade = rendimento > 0 ? custoTotal / rendimento : 0
   const margemFator = 1 + (margemLucro / 100)
   const precoSugerido = custoPorUnidade * margemFator
@@ -339,6 +463,7 @@ const SinglePage = () => {
       setIngredients([...recipe.ingredients])
       setRendimento(recipe.rendimento)
       setMargemLucro(recipe.margemLucro)
+      setPackaging({ ...recipe.packaging })
       setErrors({})
     }
   }
@@ -475,7 +600,37 @@ const SinglePage = () => {
             </tbody>
           </table>
 
+          <h2 style="color: #78350f; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #f59e0b; padding-bottom: 8px;">📦 Embalagem</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th style="text-align: center;">Qtd. Usada</th>
+                <th style="text-align: center;">Tam. Pacote</th>
+                <th style="text-align: right;">Preço Pacote</th>
+                <th style="text-align: right;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">${packaging.description}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${packaging.quantity_used}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${packaging.package_size}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">${formatBRL(packaging.price_per_package)}</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right; font-weight: bold;">${formatBRL(custoEmbalagem)}</td>
+              </tr>
+            </tbody>
+          </table>
+
           <div class="results">
+            <div class="result-row">
+              <span class="label">Custo Ingredientes:</span>
+              <span>${formatBRL(custoIngredientes)}</span>
+            </div>
+            <div class="result-row">
+              <span class="label">Custo Embalagem:</span>
+              <span>${formatBRL(custoEmbalagem)}</span>
+            </div>
             <div class="result-row">
               <span class="label">Custo Total da Receita:</span>
               <span>${formatBRL(custoTotal)}</span>
@@ -624,6 +779,126 @@ const SinglePage = () => {
                 placeholder="Ex: 10"
                 min="1"
               />
+            </div>
+
+            {/* Card: Embalagem */}
+            <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 border-l-4 border-rose-300 hover:shadow-xl transition" style={{ boxShadow: '0 4px 6px rgba(139, 69, 19, 0.1)' }}>
+              <label className="block text-xs md:text-sm font-bold text-amber-900 mb-4 uppercase tracking-widest">
+                📦 Embalagem por Unidade (Modelo Pacote)
+              </label>
+              
+              <div className="space-y-3">
+                {/* Descrição */}
+                <div>
+                  <label className="text-xs md:text-sm text-amber-800 font-semibold mb-1 block">Tipo/Descrição {errors['packaging_description'] && <span className="text-red-600 text-xs">❌ {errors['packaging_description']}</span>}</label>
+                  <input
+                    type="text"
+                    value={packaging.description}
+                    onChange={(e) => {
+                      setPackaging({ ...packaging, description: e.target.value })
+                      if (errors['packaging_description']) {
+                        const newErrors = { ...errors }
+                        delete newErrors['packaging_description']
+                        setErrors(newErrors)
+                      }
+                    }}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition text-xs md:text-sm ${
+                      errors['packaging_description']
+                        ? 'border-red-400 focus:border-red-600 focus:ring-red-200'
+                        : 'border-rose-200 focus:border-orange-400 focus:ring-orange-100'
+                    }`}
+                    placeholder="Ex: Caixa individual, Pote de vidro..."
+                  />
+                </div>
+
+                {/* Quantidade Usada e Tamanho do Pacote */}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Quantidade Usada */}
+                  <div>
+                    <label className="text-xs md:text-sm text-amber-800 font-semibold mb-1 block">Qtd. Usada {errors['packaging_quantity'] && <span className="text-red-600 text-xs">❌</span>}</label>
+                    <input
+                      type="number"
+                      value={packaging.quantity_used}
+                      onChange={(e) => {
+                        setPackaging({ ...packaging, quantity_used: Number(e.target.value) })
+                        if (errors['packaging_quantity']) {
+                          const newErrors = { ...errors }
+                          delete newErrors['packaging_quantity']
+                          setErrors(newErrors)
+                        }
+                      }}
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition text-xs md:text-sm text-center ${
+                        errors['packaging_quantity']
+                          ? 'border-red-400 focus:border-red-600 focus:ring-red-200'
+                          : 'border-rose-200 focus:border-orange-400 focus:ring-orange-100'
+                      }`}
+                      placeholder="1"
+                      step="0.01"
+                      min="0"
+                    />
+                  </div>
+
+                  {/* Tamanho do Pacote */}
+                  <div>
+                    <label className="text-xs md:text-sm text-amber-800 font-semibold mb-1 block">Tamanho Pacote {errors['packaging_package_size'] && <span className="text-red-600 text-xs">❌</span>}</label>
+                    <input
+                      type="number"
+                      value={packaging.package_size}
+                      onChange={(e) => {
+                        setPackaging({ ...packaging, package_size: Number(e.target.value) })
+                        if (errors['packaging_package_size']) {
+                          const newErrors = { ...errors }
+                          delete newErrors['packaging_package_size']
+                          setErrors(newErrors)
+                        }
+                      }}
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition text-xs md:text-sm text-center ${
+                        errors['packaging_package_size']
+                          ? 'border-red-400 focus:border-red-600 focus:ring-red-200'
+                          : 'border-rose-200 focus:border-orange-400 focus:ring-orange-100'
+                      }`}
+                      placeholder="50"
+                      step="0.01"
+                      min="1"
+                    />
+                  </div>
+                </div>
+
+                {/* Preço do Pacote */}
+                <div>
+                  <label className="text-xs md:text-sm text-amber-800 font-semibold mb-1 block">Preço do Pacote {errors['packaging_price'] && <span className="text-red-600 text-xs">❌ {errors['packaging_price']}</span>}</label>
+                  <input
+                    type="number"
+                    value={packaging.price_per_package}
+                    onChange={(e) => {
+                      setPackaging({ ...packaging, price_per_package: Number(e.target.value) })
+                      if (errors['packaging_price']) {
+                        const newErrors = { ...errors }
+                        delete newErrors['packaging_price']
+                        setErrors(newErrors)
+                      }
+                    }}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition text-xs md:text-sm text-right ${
+                      errors['packaging_price']
+                        ? 'border-red-400 focus:border-red-600 focus:ring-red-200'
+                        : 'border-rose-200 focus:border-orange-400 focus:ring-orange-100'
+                    }`}
+                    placeholder="0.00"
+                    step="0.01"
+                    min="0"
+                  />
+                </div>
+
+                {/* Resumo de Custo */}
+                <div className="mt-3 pt-3 border-t border-rose-200 bg-rose-50 rounded-lg p-3 space-y-2">
+                  <p className="text-xs md:text-sm text-amber-900">
+                    <strong>Fórmula:</strong> (Qtd. Usada ÷ Tamanho Pacote) × Preço Pacote
+                  </p>
+                  <p className="text-xs md:text-sm text-amber-900">
+                    <strong>({packaging.quantity_used} ÷ {packaging.package_size}) × {formatBRL(packaging.price_per_package)} = </strong><span className="text-rose-600 font-bold text-base">{formatBRL(custoEmbalagem)}</span>
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Card: Tabela de Ingredientes */}
@@ -842,6 +1117,14 @@ const SinglePage = () => {
                 <div className="flex justify-between border-b border-amber-200 pb-2">
                   <span className="text-amber-800 font-medium">Rendimento:</span>
                   <span className="text-amber-900 font-bold">{rendimento} un.</span>
+                </div>
+                <div className="flex justify-between border-b border-amber-200 pb-2">
+                  <span className="text-amber-800 font-medium">Custo Ingredientes:</span>
+                  <span className="text-amber-900 font-bold">{formatBRL(custoIngredientes)}</span>
+                </div>
+                <div className="flex justify-between border-b border-amber-200 pb-2">
+                  <span className="text-amber-800 font-medium">Custo Embalagem:</span>
+                  <span className="text-rose-600 font-bold">{formatBRL(custoEmbalagem)}</span>
                 </div>
                 <div className="flex justify-between border-b border-amber-200 pb-2">
                   <span className="text-amber-800 font-medium">Custo Total:</span>
