@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: doces-lucros-luz
+    env: python
+    region: ohio
+    plan: free
+    buildCommand: >
+      cd frontend && npm install && npm run build && cd ../backend &&
+      pip install -r requirements.txt
+    startCommand: >
+      cd backend && gunicorn config.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*.onrender.com"
+    autoDeploy: true
+
+  - type: pserv
+    name: doces-lucros-db
+    env: postgres
+    plan: free
+    region: ohio
+    ipAllowList: []
+    envVars:
+      - key: POSTGRES_USER
+        value: doceslucro
+      - key: POSTGRES_DB
+        value: doces_db
