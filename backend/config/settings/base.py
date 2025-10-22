@@ -206,7 +206,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Logging configuration
+# Logging configuration (console only - no file handlers for production compatibility)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -215,26 +215,20 @@ LOGGING = {
             'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         },
-        'security': {
-            'format': '{asctime} SECURITY {levelname}: {message}',
-            'style': '{',
-        },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'security_file': {
-            'level': 'WARNING',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs' / 'security.log',
-            'formatter': 'security',
-        },
     },
     'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
         'security': {
-            'handlers': ['console', 'security_file'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
         },
