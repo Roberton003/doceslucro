@@ -55,26 +55,17 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
-# Logging
+# Logging - usa console ao invés de arquivo (para Render)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-    },
     'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs' / 'django_error.log',
-            'formatter': 'verbose',
+        'console': {
+            'class': 'logging.StreamHandler',
         },
     },
     'root': {
-        'handlers': ['file'],
-        'level': 'ERROR',
+        'handlers': ['console'],
+        'level': 'INFO',
     },
 }
