@@ -15,9 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path, include
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -26,7 +24,6 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
-from .views import IndexView, serve_frontend_file
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -41,11 +38,4 @@ urlpatterns = [
     # API Documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    
-    # Frontend static files (assets, images, etc)
-    re_path(r'^assets/(?P<path>.*)$', serve_frontend_file, name='frontend-assets'),
-    re_path(r'^vite\.svg$', serve_frontend_file, {'path': 'vite.svg'}, name='vite-svg'),
-    
-    # React frontend root (must be last)
-    path('', IndexView.as_view(), name='index'),
 ]
