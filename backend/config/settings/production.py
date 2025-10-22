@@ -56,25 +56,15 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
-# Static files configuration for serving React frontend
+# Static files configuration
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 
-# WhiteNoise configuration - use ManifestStaticFilesStorage instead
-# This allows serving files without the manifest requirement
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# WhiteNoise configuration for serving static files efficiently
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Add frontend dist directory to staticfiles dirs
-STATICFILES_DIRS = [
-    BASE_DIR.parent / 'frontend' / 'dist',  # Serve all frontend files including assets
-]
-
-# Template configuration to serve React index.html
-TEMPLATES[0]['DIRS'] = [BASE_DIR.parent / 'frontend' / 'dist']
-
-# WhiteNoise configuration
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_AUTOREFRESH = True
-WHITENOISE_INDEX_FILE = True
+# Template configuration to serve React index.html from staticfiles
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'staticfiles' / 'frontend']
 
 # Logging - usa console ao invés de arquivo (para Render)
 LOGGING = {

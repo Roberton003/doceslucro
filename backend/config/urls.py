@@ -26,7 +26,7 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
-from .views import IndexView
+from .views import IndexView, serve_frontend_file
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -41,13 +41,11 @@ urlpatterns = [
     # API Documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-]
-
-# Serve static files in development (WhiteNoise handles this in production)
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-# React frontend - catch-all route (MUST be absolute last)
-urlpatterns += [
-    re_path(r'^.*$', IndexView.as_view(), name='index'),
+    
+    # Frontend static files (assets, images, etc)
+    re_path(r'^assets/(?P<path>.*)$', serve_frontend_file, name='frontend-assets'),
+    re_path(r'^vite\.svg$', serve_frontend_file, {'path': 'vite.svg'}, name='vite-svg'),
+    
+    # React frontend root (must be last)
+    path('', IndexView.as_view(), name='index'),
 ]
