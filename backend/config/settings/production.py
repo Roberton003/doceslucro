@@ -3,7 +3,8 @@ import dj_database_url
 
 # Production settings
 DEBUG = False
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='doces-lucros-luz.onrender.com,doceslucro.onrender.com,127.0.0.1,localhost')
+# Forçar ALLOWED_HOSTS sem permitir override por variável de ambiente
+ALLOWED_HOSTS = ['doces-lucros-luz.onrender.com', 'doceslucro.onrender.com', '127.0.0.1', 'localhost']
 
 # Database
 DATABASES = {
