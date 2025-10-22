@@ -56,6 +56,18 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
+# Static files configuration for serving React frontend
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR.parent / 'frontend' / 'dist' / 'assets',
+]
+
+# WhiteNoise configuration for serving static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Template configuration to serve React index.html
+TEMPLATES[0]['DIRS'] = [BASE_DIR.parent / 'frontend' / 'dist']
+
 # Logging - usa console ao invés de arquivo (para Render)
 LOGGING = {
     'version': 1,
