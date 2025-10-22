@@ -12,9 +12,10 @@ cd ..
 
 # 2. Copiar frontend buildado para dentro do backend
 echo "📋 Copiando frontend para backend..."
-rm -rf backend/staticfiles/frontend
+rm -rf backend/staticfiles/frontend 2>/dev/null || true
 mkdir -p backend/staticfiles/frontend
 cp -r frontend/dist/* backend/staticfiles/frontend/
+echo "✅ Frontend copiado: $(ls -la backend/staticfiles/frontend/ | wc -l) arquivos"
 
 # 3. Instalar dependências Python
 echo "📚 Instalando dependências Python..."
