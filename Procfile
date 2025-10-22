@@ -1,2 +1,2 @@
-web: gunicorn config.wsgi:application
-release: python manage.py migrate
+web: cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
+release: cd backend && python manage.py migrate
