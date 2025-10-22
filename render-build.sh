@@ -17,9 +17,13 @@ mkdir -p backend/staticfiles
 cp -r frontend/dist/* backend/staticfiles/
 echo "✅ Frontend copiado para staticfiles"
 
-# 3. Ajustar caminhos no index.html para usar /static/ prefix
-echo "🔧 Ajustando caminhos dos assets no index.html..."
-sed -i 's|href="/|href="/static/|g; s|src="/|src="/static/|g' backend/staticfiles/index.html
+# 3. Ajustar caminhos no index.html e nos arquivos JS/CSS para usar /static/ prefix
+echo "🔧 Ajustando caminhos dos assets..."
+sed -i 's|"/assets/|"/static/assets/|g' backend/staticfiles/index.html
+sed -i 's|"/assets/|"/static/assets/|g' backend/staticfiles/assets/*.js
+sed -i 's|"/assets/|"/static/assets/|g' backend/staticfiles/assets/*.css
+sed -i 's|"/vite\.svg|"/static/vite.svg|g' backend/staticfiles/index.html
+sed -i 's|"/vite\.svg|"/static/vite.svg|g' backend/staticfiles/assets/*.js
 echo "✅ Caminhos ajustados"
 
 # 4. Instalar dependências Python
