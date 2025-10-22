@@ -5,7 +5,7 @@ services:
     region: ohio
     plan: free
     buildCommand: |
-      cd frontend && npm install --legacy-peer-deps && npm run build && cd ../backend && pip install -r requirements.txt
+      bash build.sh
     startCommand: |
       cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:10000
     envVars:

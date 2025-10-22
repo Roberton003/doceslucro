@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+set -e
 
 # Build do Frontend
 echo "🔨 Building Frontend..."
 cd frontend
-npm install
+npm ci --legacy-peer-deps
 npm run build
 cd ..
 
@@ -11,8 +12,6 @@ cd ..
 echo "🔨 Building Backend..."
 cd backend
 pip install -r requirements.txt
-python manage.py collectstatic --noinput
-python manage.py migrate
 cd ..
 
 echo "✅ Build concluído!"
