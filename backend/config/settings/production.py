@@ -64,7 +64,7 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Template configuration to serve React index.html from staticfiles
-TEMPLATES[0]['DIRS'] = [BASE_DIR / 'staticfiles' / 'frontend']
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'staticfiles']
 
 # Logging - usa console ao invés de arquivo (para Render)
 LOGGING = {
