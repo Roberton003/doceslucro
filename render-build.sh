@@ -14,6 +14,10 @@ cd ..
 echo "📚 Instalando dependências Python..."
 cd backend
 pip install -r requirements.txt
+
+# 3. Coletar arquivos estáticos
+echo "📁 Coletando arquivos estáticos..."
+python manage.py collectstatic --noinput
 cd ..
 
 echo "✅ Build concluído com sucesso!"
