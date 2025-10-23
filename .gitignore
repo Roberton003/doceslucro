@@ -141,3 +141,8 @@ cython_debug/
 ExtrasIgnorado/
 backend/logs/
 backend/backend_server.log
+
+# Documentação local (não commitar)
+*.md
+!README.md
+docs/
