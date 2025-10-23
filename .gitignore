@@ -141,3 +141,8 @@ cython_debug/
 ExtrasIgnorado/
 backend/logs/
 backend/backend_server.log
+
+# Markdown files (local documentation only)
+*.md
+!README.md
+docs-local/
