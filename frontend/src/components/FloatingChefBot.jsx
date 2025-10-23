@@ -106,7 +106,7 @@ const FloatingChefBot = () => {
     <>
       {/* Botão Flutuante */}
       <div className={`chef-bot-button ${isOpen ? 'active' : ''}`} onClick={handleToggle}>
-        <img src={luzdoce} alt="ChefBot" className="bot-icon-image" />
+        <img src={luzdoce} alt="ChefLuz" className="bot-icon-image" />
         <div className={`pulse-ring ${isOpen ? 'hidden' : ''}`}></div>
       </div>
 
@@ -123,9 +123,9 @@ const FloatingChefBot = () => {
         {/* Cabeçalho */}
         <div className="chat-header">
           <div className="header-content">
-            <img src={luzdoce} alt="ChefBot" className="bot-avatar-image" />
+            <img src={luzdoce} alt="ChefLuz" className="bot-avatar-image" />
             <div className="header-info">
-              <h3>ChefBot</h3>
+              <h3>ChefLuz</h3>
               <p>Assistente Culinário</p>
             </div>
           </div>
