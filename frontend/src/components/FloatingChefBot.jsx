@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './FloatingChefBot.css';
+import luzdoce from '../assets/luzdoce2.jpeg';
 
 const FloatingChefBot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +100,7 @@ const FloatingChefBot = () => {
     <>
       {/* Botão Flutuante */}
       <div className={`chef-bot-button ${isOpen ? 'active' : ''}`} onClick={handleToggle}>
-        <div className="bot-icon">🍳</div>
+        <img src={luzdoce} alt="ChefBot" className="bot-icon-image" />
         <div className={`pulse-ring ${isOpen ? 'hidden' : ''}`}></div>
       </div>
 
@@ -116,7 +117,7 @@ const FloatingChefBot = () => {
         {/* Cabeçalho */}
         <div className="chat-header">
           <div className="header-content">
-            <div className="bot-avatar">🍳</div>
+            <img src={luzdoce} alt="ChefBot" className="bot-avatar-image" />
             <div className="header-info">
               <h3>ChefBot</h3>
               <p>Assistente Culinário</p>
