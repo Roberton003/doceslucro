@@ -54,38 +54,44 @@ const FloatingChefBot = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simular resposta da IA (depois conectar com backend)
-    setTimeout(() => {
+    try {
+      // Fazer requisição ao backend (API Groq)
+      const response = await fetch('http://localhost:8000/api/chat/nutrition/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_message: inputValue,
+          context: 'Você é um assistente culinário experiente. Responda perguntas sobre receitas, ingredientes, técnicas culinárias e nutrição de forma amigável e prática.'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao conectar com o servidor');
+      }
+
+      const data = await response.json();
+      
       const botResponse = {
         id: messages.length + 2,
-        text: getBotResponse(inputValue),
+        text: data.response || 'Desculpe, não consegui processar sua pergunta. Tente novamente!',
         sender: 'bot',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Erro:', error);
+      const botResponse = {
+        id: messages.length + 2,
+        text: `❌ Erro ao conectar: ${error.message}. Tente novamente mais tarde!`,
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, botResponse]);
+    } finally {
       setIsLoading(false);
-    }, 800);
-  };
-
-  const getBotResponse = (userMessage) => {
-    const lowerMessage = userMessage.toLowerCase();
-
-    if (lowerMessage.includes('receita') || lowerMessage.includes('como fazer')) {
-      return '🍳 Que legal! Posso te ajudar com receitas deliciosas! Qual tipo de prato você está afim de fazer? Doce, salgado, entrada, prato principal?';
     }
-    if (lowerMessage.includes('caloria') || lowerMessage.includes('nutrição')) {
-      return '📊 Ótimo! Posso calcular as calorias e informações nutricionais das receitas. Qual receita você quer analisar?';
-    }
-    if (lowerMessage.includes('ingrediente')) {
-      return '🥕 Perfeito! Tenho informações sobre diversos ingredientes. Qual ingrediente você quer conhecer melhor?';
-    }
-    if (lowerMessage.includes('técnica') || lowerMessage.includes('como cozinhar')) {
-      return '👨‍🍳 Adorei! Posso ensinar técnicas culinária incríveis! Qual tipo de técnica te interessa?';
-    }
-    if (lowerMessage.includes('obrigado') || lowerMessage.includes('valeu')) {
-      return '😊 De nada, chef! Estou sempre aqui pra ajudar! Tem mais alguma coisa?';
-    }
-    return '🍽️ Entendi! Deixa eu pensar... Pode me dar mais detalhes? Estou aqui pra ajudar com receitas, ingredientes, técnicas e cálculos nutricionais!';
   };
 
   const handleClose = () => {

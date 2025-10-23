@@ -13,8 +13,9 @@ class NutritionChatView(APIView):
     
     def post(self, request):
         try:
-            user_message = request.data.get('message')
-            recipe_context = request.data.get('context', '')
+            # Aceita tanto 'message' quanto 'user_message'
+            user_message = request.data.get('message') or request.data.get('user_message')
+            context = request.data.get('context', '')
             
             if not user_message:
                 return Response(
@@ -35,7 +36,7 @@ class NutritionChatView(APIView):
             system_prompt = """Você é especialista em nutrição e culinária.
             Ajude com informações nutricionais de forma concisa."""
             
-            user_prompt = f"""Contexto: {recipe_context}\nPergunta: {user_message}"""
+            user_prompt = f"""Contexto: {context}\nPergunta: {user_message}"""
             
             chat_completion = client.chat.completions.create(
                 messages=[
@@ -56,6 +57,7 @@ class NutritionChatView(APIView):
             
             return Response({
                 'user_message': user_message,
+                'response': bot_response,
                 'bot_response': bot_response,
                 'model': model
             }, status=status.HTTP_200_OK)
