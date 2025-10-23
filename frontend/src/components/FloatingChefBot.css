@@ -67,6 +67,7 @@
   display: block;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
