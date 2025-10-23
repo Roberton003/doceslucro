@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apps.templates',
     'apps.shopping',
     'apps.dashboard',
+    'apps.chat',
 ]
 
 MIDDLEWARE = [

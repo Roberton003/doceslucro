@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logoBrand from '../assets/logo-brand.png'
+import NutritionChat from './NutritionChat'
 
 // Receitas pré-cadastradas com dados de teste
 const RECEITAS_PADRAO = [
@@ -1167,6 +1168,11 @@ const SinglePage = () => {
               <p className="text-xs md:text-sm text-amber-900 leading-relaxed">
                 <span className="font-bold text-orange-700">💡 Dica:</span> Todos os valores são calculados automaticamente. Adicione ingredientes, defina quantidades e preços, e escolha a margem de lucro desejada.
               </p>
+            </div>
+
+            {/* Card: Chat de Nutrição */}
+            <div className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition h-96" style={{ boxShadow: '0 4px 6px rgba(139, 69, 19, 0.1)' }}>
+              <NutritionChat />
             </div>
           </div>
         </div>
