@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECRET_KEY is loaded from environment variables below
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG será configurado via variáveis de ambiente em production.py
+DEBUG = False  # ⚠️ Sempre False por padrão - configurar em settings/production.py se necessário
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='localhost,127.0.0.1')
 
 
 # Application definition
@@ -166,6 +167,7 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/hour',
         'user': '1000/hour',
+        'chat': '100/hour',  # Rate limiting para chat endpoint
     },
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
