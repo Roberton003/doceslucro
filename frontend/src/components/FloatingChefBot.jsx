@@ -6,13 +6,19 @@ import luzdoce from '../assets/luzdoce2.jpeg';
 const formatMarkdown = (text) => {
   if (!text) return '';
   
-  // Remover ### (títulos) e deixar apenas o texto em negrito
-  text = text.replace(/^### /gm, '');
+  // Remover linhas separadoras (---, ***, ___)
+  text = text.replace(/^[-*_]{3,}$/gm, '');
+  
+  // Remover títulos Markdown (#### ou #####, etc)
+  text = text.replace(/^#{1,6}\s*/gm, '');
   
   // Converter **texto** para <strong>texto</strong>
   text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   
-  // Remover linhas vazias extras
+  // Converter *texto* para <em>texto</em> (itálico)
+  text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  
+  // Remover linhas vazias extras (mais de 2 quebras de linha seguidas)
   text = text.replace(/\n\n\n+/g, '\n\n');
   
   return text;
