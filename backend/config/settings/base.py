@@ -167,7 +167,8 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/hour',
         'user': '1000/hour',
-        'chat': '100/hour',  # Rate limiting para chat endpoint
+        'chat': '50/hour',  # Usuários anônimos: 50/hora
+        'chat_auth': '1000/hour',  # Usuários autenticados: 1000/hora
     },
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',

@@ -2,24 +2,30 @@ import os
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.throttling import UserRateThrottle
+from rest_framework.permissions import AllowAny
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from groq import Groq
 from .models import ChatMessage
 from apps.ingredients.models import Ingredient
 from apps.products.models import Recipe
 
 
-class ChatThrottle(UserRateThrottle):
-    """Rate limiting para o endpoint de chat"""
+class ChatThrottle(AnonRateThrottle):
+    """Rate limiting para o endpoint de chat - anônimos"""
     scope = 'chat'
-    rate = '100/hour'  # 100 requisições por hora
+    rate = '50/hour'  # 50 requisições por hora para usuários anônimos
+
+
+class ChatAuthenticatedThrottle(UserRateThrottle):
+    """Rate limiting para usuários autenticados"""
+    scope = 'chat_auth'
+    rate = '1000/hour'  # 1000 requisições por hora para autenticados
 
 
 class NutritionChatView(APIView):
     """API endpoint para chat de nutrição com conhecimento de receitas"""
-    permission_classes = [IsAuthenticated]  # ✅ Apenas usuários autenticados
-    throttle_classes = [ChatThrottle]  # ✅ Rate limiting
+    permission_classes = [AllowAny]  # Permitir anônimos para desenvolvimento
+    throttle_classes = [ChatThrottle, ChatAuthenticatedThrottle]  # Rate limiting
     
     def _get_ingredients_context(self):
         """Recupera lista de ingredientes cadastrados para contexto do AI"""
