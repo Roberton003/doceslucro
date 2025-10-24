@@ -2,6 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import './FloatingChefBot.css';
 import luzdoce from '../assets/luzdoce2.jpeg';
 
+// Função para limpar e formatar Markdown simples
+const formatMarkdown = (text) => {
+  if (!text) return '';
+  
+  // Remover ### (títulos) e deixar apenas o texto em negrito
+  text = text.replace(/^### /gm, '');
+  
+  // Converter **texto** para <strong>texto</strong>
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  
+  // Remover linhas vazias extras
+  text = text.replace(/\n\n\n+/g, '\n\n');
+  
+  return text;
+};
+
 const FloatingChefBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -75,9 +91,10 @@ const FloatingChefBot = () => {
       
       const botResponse = {
         id: messages.length + 2,
-        text: data.response || 'Desculpe, não consegui processar sua pergunta. Tente novamente!',
+        text: formatMarkdown(data.response) || 'Desculpe, não consegui processar sua pergunta. Tente novamente!',
         sender: 'bot',
-        timestamp: new Date()
+        timestamp: new Date(),
+        isMarkdown: true
       };
       setMessages(prev => [...prev, botResponse]);
     } catch (error) {
@@ -140,7 +157,14 @@ const FloatingChefBot = () => {
               className={`message ${message.sender === 'user' ? 'user-message' : 'bot-message'}`}
             >
               <div className="message-bubble">
-                <p>{message.text}</p>
+                {message.isMarkdown ? (
+                  <div 
+                    dangerouslySetInnerHTML={{ __html: message.text }}
+                    style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
+                  />
+                ) : (
+                  <p>{message.text}</p>
+                )}
                 <span className="timestamp">
                   {message.timestamp.toLocaleTimeString('pt-BR', {
                     hour: '2-digit',
