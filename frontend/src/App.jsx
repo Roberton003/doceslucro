@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SinglePage from './components/SinglePage'
+import FloatingChefBot from './components/FloatingChefBot'
 import './App.css'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
           <Route path="/" element={<SinglePage />} />
           <Route path="/calcular" element={<SinglePage />} />
         </Routes>
+        <FloatingChefBot />
       </div>
     </Router>
   )
