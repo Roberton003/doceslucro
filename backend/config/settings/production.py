@@ -15,20 +15,22 @@ DATABASES = {
     )
 }
 
-# Security settings (HTTPS redirect desabilitado para testes iniciais)
+# Security settings - HTTPS ativo
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_HSTS_PRELOAD = False
-SECURE_HSTS_SECONDS = 0
-SECURE_SSL_REDIRECT = False  # Desabilitado temporariamente
-SESSION_COOKIE_SECURE = False  # Desabilitado temporariamente
-CSRF_COOKIE_SECURE = False  # Desabilitado temporariamente
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = 31536000  # 1 ano
+SECURE_SSL_REDIRECT = True  # ✅ Ativar HTTPS redirect
+SESSION_COOKIE_SECURE = True  # ✅ Apenas HTTPS
+CSRF_COOKIE_SECURE = True  # ✅ Apenas HTTPS
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
 # Additional security headers
 X_FRAME_OPTIONS = 'DENY'
+X_CONTENT_TYPE_OPTIONS = 'nosniff'  # Evita MIME sniffing
+SECURE_CROSS_ORIGIN_EMBEDDER_POLICY = 'require-corp'
 SECURE_REDIRECT_EXEMPT = []
 SECURE_SSL_HOST = None
 
