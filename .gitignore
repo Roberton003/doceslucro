@@ -149,7 +149,17 @@ backend/logs/
 backend/backend_server.log
 
 # Documentação local (não commitar)
+# Todos os arquivos .md EXCETO README.md na raiz
 *.md
 !README.md
+
+# Guias e documentação gerada automaticamente (não incluir em commits)
+GUIA_RAPIDO_USO.md
+IMPLEMENTATION_SUMMARY.md
+SECURITY_ACTION_PLAN.md
+SECURITY_AUDIT.md
+FINAL_STATUS.md
+RECEITAS_CADASTRADAS.md
+
 docs/
 docs-local/
