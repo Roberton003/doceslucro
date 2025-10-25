@@ -8,5 +8,5 @@ urlpatterns = [
     path('templates/', include('apps.templates.urls')),
     path('shopping/', include('apps.shopping.urls')),
     path('dashboard/', include('apps.dashboard.urls')),
-    path('chat/', include('apps.chat.urls')),
+    # path('chat/', include('apps.chat.urls')),  # TODO: Fix import error
 ]
