@@ -183,10 +183,13 @@ const FloatingChefBot = () => {
 
           {isLoading && (
             <div className="message bot-message">
-              <div className="message-bubble loading">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div className="message-bubble loading-bubble">
+                <div className="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="loading-text">ChefLuz está pensando...</div>
               </div>
             </div>
           )}
