@@ -117,7 +117,7 @@
   padding: 12px 16px;
   border-radius: 20px;
   box-shadow: var(--shadow-light);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   z-index: 998;
   animation: slideInUp 0.4s ease;
@@ -246,14 +246,14 @@
 
 .header-info h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .header-info p {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   opacity: 0.9;
   font-weight: 400;
 }
@@ -356,25 +356,32 @@
 
 .message-bubble p {
   margin: 0 0 4px 0;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .message-bubble .timestamp {
-  font-size: 11px;
+  font-size: 12px;
   opacity: 0.7;
   display: block;
   margin-top: 4px;
 }
 
-/* Loading */
-.message-bubble.loading {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 12px 16px;
+/* Estilos adicionais para elementos Markdown dentro das mensagens */
+.message-bubble strong {
+  font-weight: 600;
+  font-size: 17px;
 }
+
+.message-bubble em {
+  font-style: italic;
+  font-size: 16px;
+}
+
+/* ========================================
+   LOADING
+   ======================================== */
 
 .message-bubble.loading span {
   width: 8px;
@@ -420,7 +427,7 @@
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 10px 16px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   transition: all 0.2s ease;
