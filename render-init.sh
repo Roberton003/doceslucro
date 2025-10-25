@@ -5,6 +5,9 @@ echo "🔍 Iniciando script de configuração pós-build para Render..."
 
 cd backend
 
+# Set Django settings module
+export DJANGO_SETTINGS_MODULE=config.settings.production
+
 # 1. Executar migrations
 echo "🔄 Executando migrations..."
 python manage.py migrate --noinput || echo "⚠️ Migrations falharam - continuando..."
