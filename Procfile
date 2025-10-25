@@ -1,2 +1,3 @@
 build: bash render-build.sh
-web: cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
+release: cd backend && python manage.py migrate --noinput
+web: cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 4

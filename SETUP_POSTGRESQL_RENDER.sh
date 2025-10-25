@@ -1,0 +1,43 @@
+#!/bin/bash
+# 📋 SETUP POSTGRESQL NO RENDER - PASSO A PASSO
+
+echo "================================"
+echo "🐘 CONFIGURAR POSTGRESQL NO RENDER"
+echo "================================"
+
+echo ""
+echo "PASSO 1: Criar PostgreSQL no Render"
+echo "─────────────────────────────────"
+echo "1. Acesse: https://dashboard.render.com"
+echo "2. Clique em '+' → PostgreSQL"
+echo "3. Configure:"
+echo "   • Name: cheflu-db"
+echo "   • Database: cheflu_prod"
+echo "   • User: cheflu_user"
+echo "   • Region: São Paulo (sa-east-1) ou mesma do app"
+echo "   • Free tier (0.5GB)"
+echo ""
+echo "4. COPIE a Internal Database URL"
+echo "   Exemplo: postgresql://user:password@host:5432/dbname"
+echo ""
+
+echo "PASSO 2: Adicionar DATABASE_URL ao Render Dashboard"
+echo "───────────────────────────────────────────────────"
+echo "1. Acesse seu Web Service: https://dashboard.render.com/services"
+echo "2. Clique no seu app (doceslucro)"
+echo "3. Environment → Add Environment Variable"
+echo "4. Adicione:"
+echo "   KEY: DATABASE_URL"
+echo "   VALUE: <cole_a_URL_do_PostgreSQL_aqui>"
+echo ""
+
+echo "PASSO 3: Verificar aplicação"
+echo "───────────────────────────"
+echo "Após fazer push, o Render vai:"
+echo "1. ✅ Detectar mudanças"
+echo "2. ✅ Executar migrations automaticamente"
+echo "3. ✅ Conectar ao PostgreSQL"
+echo "4. ✅ Deploy da v2 pronta"
+echo ""
+
+echo "✅ PRONTO! Você terminou a configuração de PostgreSQL!"
