@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'apps.templates',
     'apps.shopping',
     'apps.dashboard',
-    # 'apps.chat',  # TODO: Fix import error
+    'apps.chat',
 ]
 
 MIDDLEWARE = [
