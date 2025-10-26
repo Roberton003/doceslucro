@@ -148,9 +148,12 @@ ExtrasIgnorado/
 backend/logs/
 backend/backend_server.log
 
-# Markdown files (local documentation only)
+# Markdown files (local documentation only - keep only README.md)
 *.md
 !README.md
+
+# Shell scripts (local only)
+SECURITY_VALIDATION.sh
 
 # Documentação local
 docs-local/
