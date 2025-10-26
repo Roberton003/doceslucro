@@ -17,15 +17,16 @@ python manage.py migrate --noinput || {
 
 # 2. Coletar estaticos
 echo "📁 Coletando arquivos estáticos..."
-python manage.py collectstatic --noinput --clear || {
-    echo "⚠️ Collectstatic falhou - continuando..."
-}
+python manage.py collectstatic --noinput --clear || echo "⚠️ Collectstatic falhou - continuando..."
 
-# 3. Carregar dados iniciais (receitas)
+# 3. Carregar fixtures (receitas iniciais) - MAIS CONFIÁVEL QUE SEED_RECIPES
 echo "📊 Carregando receitas iniciais..."
-python manage.py seed_recipes
+python manage.py loaddata initial_recipes || echo "⚠️ Loaddata falhou, tentando seed_recipes..."
 
-# 4. Verificar se recipes foram criadas
+# 4. Se loaddata falhou, tentar seed_recipes
+python manage.py seed_recipes 2>/dev/null || echo "⚠️ Seed_recipes também falhou"
+
+# 5. Verificar resultado final
 echo "✅ Verificando dados no banco..."
 python manage.py shell << EOF
 from apps.products.models import Recipe
@@ -37,5 +38,8 @@ if recipe_count == 0:
 else:
     print(f"✅ {recipe_count} receitas carregadas com sucesso!")
 EOF
+
+echo "✅ Inicialização concluída!"
+
 
 echo "✅ Inicialização concluída!"

@@ -78,7 +78,9 @@ const FloatingChefBot = () => {
 
     try {
       // Fazer requisição ao backend (API Groq)
-      const response = await fetch('http://localhost:8000/api/chat/nutrition/', {
+      // Usar URL relativa para funcionar tanto local quanto em produção
+      const apiUrl = `${window.location.origin}/api/chat/nutrition/`;
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
