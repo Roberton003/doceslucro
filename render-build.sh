@@ -39,6 +39,10 @@ python manage.py migrate --noinput || {
     exit 1
 }
 
+# 4.6 Carregar receitas durante o build (garantir que nunca ficam vazias)
+echo "📊 Carregando receitas iniciais..."
+python manage.py loaddata initial_recipes 2>/dev/null || python manage.py seed_recipes
+
 # 5. Coletar arquivos estáticos
 echo "📁 Coletando arquivos estáticos..."
 python manage.py collectstatic --noinput
