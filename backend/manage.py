@@ -4,9 +4,12 @@ import os
 import sys
 from pathlib import Path
 
-# Carregar .env
-from dotenv import load_dotenv
-load_dotenv(Path(__file__).resolve().parent / '.env')
+# Carregar .env (opcional - se não existir, continuar normalmente)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).resolve().parent / '.env')
+except ImportError:
+    pass  # python-dotenv não instalado, usar variáveis de ambiente do sistema
 
 
 def main():
