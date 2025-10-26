@@ -29,9 +29,21 @@ const FloatingChefBot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: 'Olá, chef! 👋 Sou o seu assistente culinário. Como posso ajudar?',
+      text: `<strong>🍰 Bem-vindo ao ChefLuz!</strong>
+
+Sou seu assistente de IA especializado em análise de receitas e otimização de preços.
+
+💡 Posso ajudá-lo com:
+• <strong>Receitas mais lucrativas</strong> - Qual gera mais lucro?
+• <strong>Análise de custos</strong> - Quanto custa cada produto?
+• <strong>Margens de lucro</strong> - Qual a melhor margem?
+• <strong>Otimização de preços</strong> - Quanto devo cobrar?
+• <strong>Comparação de receitas</strong> - Qual é mais rentável?
+
+✨ Faça uma pergunta e vou analisar suas receitas em tempo real!`,
       sender: 'bot',
-      timestamp: new Date()
+      timestamp: new Date(),
+      isMarkdown: true
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -52,13 +64,31 @@ const FloatingChefBot = () => {
     }
   }, [isOpen]);
 
-  // Esconder saudação após 5 segundos
+  // Mostrar saudação em loop: aparecer por 5s, desaparecer 2s, repetir
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (!isOpen) {
+      let timers = [];
+      
+      const showGreeting = () => {
+        setShowGreeting(true);
+        // Mostra por 5 segundos
+        timers.push(setTimeout(() => {
+          setShowGreeting(false);
+          // Esconde por 2 segundos, depois mostra novamente
+          timers.push(setTimeout(showGreeting, 2000));
+        }, 5000));
+      };
+      
+      // Inicia o ciclo
+      showGreeting();
+      
+      return () => {
+        timers.forEach(timer => clearTimeout(timer));
+      };
+    } else {
       setShowGreeting(false);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    }
+  }, [isOpen]);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -135,10 +165,10 @@ const FloatingChefBot = () => {
         <div className={`pulse-ring ${isOpen ? 'hidden' : ''}`}></div>
       </div>
 
-      {/* Saudação Flutuante */}
+      {/* Saudação Flutuante - Aparece quando chat não está aberto */}
       {!isOpen && showGreeting && (
         <div className="greeting-bubble">
-          <span>Posso te ajudar? 👋</span>
+          <span>👋 Como posso te ajudar?</span>
           <div className="arrow"></div>
         </div>
       )}
