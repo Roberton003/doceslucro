@@ -31,6 +31,14 @@ echo "📚 Instalando dependências Python..."
 cd backend
 pip install -r requirements.txt
 
+# 4.5 Executar migrations durante o build (crítico para Render)
+echo "🔄 Executando migrations..."
+export DJANGO_SETTINGS_MODULE=config.settings.production
+python manage.py migrate --noinput || {
+    echo "❌ Migrations falharam durante build!"
+    exit 1
+}
+
 # 5. Coletar arquivos estáticos
 echo "📁 Coletando arquivos estáticos..."
 python manage.py collectstatic --noinput
