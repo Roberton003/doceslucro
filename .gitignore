@@ -108,10 +108,14 @@ celerybeat.pid
 .env
 .env.local
 .env.*.local
+.env.production
+.env.*.production
 backend/.env
 backend/.env.local
+backend/.env.production
 frontend/.env
 frontend/.env.local
+frontend/.env.production
 .venv
 env/
 venv/
