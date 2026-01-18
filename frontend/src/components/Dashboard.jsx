@@ -10,7 +10,6 @@ const Dashboard = () => {
   })
 
   useEffect(() => {
-    // TODO: Carregar estatísticas da API
     loadStats()
   }, [])
 
@@ -33,133 +32,117 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-space-6 animate-in">
       {/* Cards de Estatísticas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white overflow-hidden shadow rounded-lg">
-          <div className="p-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-space-3">
+        {/* Produtos */}
+        <div className="stat-card">
+          <div className="p-space-3">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-medium">P</span>
-                </div>
+              <div className="stat-card-icon-primary">
+                🍰
               </div>
-              <div className="ml-5 w-0 flex-1">
-                <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">
-                    Total de Produtos
-                  </dt>
-                  <dd className="text-lg font-medium text-gray-900">
-                    {stats.totalProducts}
-                  </dd>
-                </dl>
+              <div className="ml-4 flex-1">
+                <dt className="text-sm font-medium text-doce-light">
+                  Total de Produtos
+                </dt>
+                <dd className="text-2xl font-bold text-doce-dark font-display">
+                  {stats.totalProducts}
+                </dd>
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 px-5 py-3">
-            <div className="text-sm">
-              <Link to="/products" className="font-medium text-blue-600 hover:text-blue-500">
-                Ver todos
-              </Link>
-            </div>
+          <div className="bg-doce-secondary/50 px-space-3 py-2">
+            <Link to="/products" className="link text-sm">
+              Ver todos →
+            </Link>
           </div>
         </div>
 
-        <div className="bg-white overflow-hidden shadow rounded-lg">
-          <div className="p-5">
+        {/* Receitas */}
+        <div className="stat-card">
+          <div className="p-space-3">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-medium">R</span>
-                </div>
+              <div className="stat-card-icon-success">
+                📖
               </div>
-              <div className="ml-5 w-0 flex-1">
-                <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">
-                    Total de Receitas
-                  </dt>
-                  <dd className="text-lg font-medium text-gray-900">
-                    {stats.totalRecipes}
-                  </dd>
-                </dl>
+              <div className="ml-4 flex-1">
+                <dt className="text-sm font-medium text-doce-light">
+                  Total de Receitas
+                </dt>
+                <dd className="text-2xl font-bold text-doce-dark font-display">
+                  {stats.totalRecipes}
+                </dd>
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 px-5 py-3">
-            <div className="text-sm">
-              <Link to="/recipes" className="font-medium text-green-600 hover:text-green-500">
-                Ver todas
-              </Link>
-            </div>
+          <div className="bg-doce-secondary/50 px-space-3 py-2">
+            <Link to="/recipes" className="link text-sm">
+              Ver todas →
+            </Link>
           </div>
         </div>
 
-        <div className="bg-white overflow-hidden shadow rounded-lg">
-          <div className="p-5">
+        {/* Ingredientes */}
+        <div className="stat-card">
+          <div className="p-space-3">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-medium">I</span>
-                </div>
+              <div className="stat-card-icon-accent">
+                🥄
               </div>
-              <div className="ml-5 w-0 flex-1">
-                <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">
-                    Total de Ingredientes
-                  </dt>
-                  <dd className="text-lg font-medium text-gray-900">
-                    {stats.totalIngredients}
-                  </dd>
-                </dl>
+              <div className="ml-4 flex-1">
+                <dt className="text-sm font-medium text-doce-light">
+                  Total de Ingredientes
+                </dt>
+                <dd className="text-2xl font-bold text-doce-dark font-display">
+                  {stats.totalIngredients}
+                </dd>
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 px-5 py-3">
-            <div className="text-sm">
-              <Link to="/ingredients" className="font-medium text-yellow-600 hover:text-yellow-500">
-                Ver todos
-              </Link>
-            </div>
+          <div className="bg-doce-secondary/50 px-space-3 py-2">
+            <Link to="/ingredients" className="link text-sm">
+              Ver todos →
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Produtos Recentes */}
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
-            Produtos Recentes
+      <div className="card">
+        <div className="border-b border-doce-border pb-space-2 mb-space-3">
+          <h3 className="text-lg font-display font-bold text-doce-dark">
+            🍪 Produtos Recentes
           </h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          <p className="text-sm text-doce-light mt-1">
             Últimos produtos cadastrados no sistema
           </p>
         </div>
-        <ul className="divide-y divide-gray-200">
-          {stats.recentProducts.map((product) => (
-            <li key={product.id}>
-              <div className="px-4 py-4 sm:px-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
-                        <span className="text-sm font-medium text-gray-700">
-                          {product.name.charAt(0)}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900">
-                        {product.name}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        Criado em {new Date(product.created_at).toLocaleDateString('pt-BR')}
-                      </div>
-                    </div>
+
+        <ul className="divide-y divide-doce-border/50">
+          {stats.recentProducts.map((product, index) => (
+            <li
+              key={product.id}
+              className="py-space-2 flex items-center justify-between hover:bg-doce-secondary/30 -mx-space-4 px-space-4 transition-colors duration-micro"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="flex items-center">
+                <div className="w-10 h-10 rounded-full bg-doce-primary/20 flex items-center justify-center">
+                  <span className="text-doce-accent font-bold">
+                    {product.name.charAt(0)}
+                  </span>
+                </div>
+                <div className="ml-4">
+                  <div className="font-medium text-doce-dark">
+                    {product.name}
                   </div>
-                  <div className="text-sm font-medium text-gray-900">
-                    R$ {product.price.toFixed(2)}
+                  <div className="text-sm text-doce-light">
+                    Criado em {new Date(product.created_at).toLocaleDateString('pt-BR')}
                   </div>
                 </div>
+              </div>
+              <div className="font-mono font-medium text-doce-accent">
+                R$ {product.price.toFixed(2)}
               </div>
             </li>
           ))}
@@ -167,36 +150,26 @@ const Dashboard = () => {
       </div>
 
       {/* Ações Rápidas */}
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <div className="px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
-            Ações Rápidas
+      <div className="card-accent">
+        <div className="border-b border-doce-border pb-space-2 mb-space-3">
+          <h3 className="text-lg font-display font-bold text-doce-dark">
+            ⚡ Ações Rápidas
           </h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          <p className="text-sm text-doce-light mt-1">
             Acesso rápido às principais funcionalidades
           </p>
         </div>
-        <div className="px-4 py-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link
-              to="/products/new"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-            >
-              Novo Produto
-            </Link>
-            <Link
-              to="/recipes/new"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
-            >
-              Nova Receita
-            </Link>
-            <Link
-              to="/ingredients/new"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700"
-            >
-              Novo Ingrediente
-            </Link>
-          </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-space-2">
+          <Link to="/products/new" className="btn-primary text-center">
+            🍰 Novo Produto
+          </Link>
+          <Link to="/recipes/new" className="btn-success text-center">
+            📖 Nova Receita
+          </Link>
+          <Link to="/ingredients/new" className="btn-secondary text-center">
+            🥄 Novo Ingrediente
+          </Link>
         </div>
       </div>
     </div>
