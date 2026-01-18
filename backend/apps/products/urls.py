@@ -1,7 +1,10 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import RecipeViewSet
 
-app_name = 'products'
+router = DefaultRouter()
+router.register(r'recipes', RecipeViewSet)
 
 urlpatterns = [
-    # Add your URL patterns here
+    path('', include(router.urls)),
 ]

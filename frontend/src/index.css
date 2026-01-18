@@ -7,90 +7,99 @@
    ============================================ */
 
 @layer base {
+
   /* Typography defaults */
   html {
     @apply antialiased;
   }
-  
+
   body {
     @apply font-body text-doce-dark bg-doce-secondary/30;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-display font-bold tracking-tight;
   }
-  
-  h1 { @apply text-3xl; }
-  h2 { @apply text-2xl; }
-  h3 { @apply text-xl; }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
 }
 
 @layer components {
+
   /* ============================================
      🔘 BUTTONS
      ============================================ */
   .btn {
-    @apply inline-flex items-center justify-center 
-           px-4 py-2 rounded-sm font-medium text-sm
-           transition-all duration-micro
-           focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-sm font-medium text-sm transition-all duration-micro focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .btn-primary {
-    @apply btn bg-doce-primary text-white shadow-subtle
-           hover:shadow-medium hover:brightness-105
-           focus:ring-doce-primary/50;
+    @apply btn bg-doce-primary text-white shadow-subtle hover:shadow-medium hover:brightness-105 focus:ring-doce-primary/50;
   }
 
   .btn-secondary {
-    @apply btn bg-white text-doce-dark border border-doce-border
-           hover:bg-doce-secondary hover:border-doce-primary/30
-           focus:ring-doce-primary/30;
+    @apply btn bg-white text-doce-dark border border-doce-border hover:bg-doce-secondary hover:border-doce-primary/30 focus:ring-doce-primary/30;
   }
 
   .btn-success {
-    @apply btn bg-doce-success text-doce-dark shadow-subtle
-           hover:shadow-medium hover:brightness-105
-           focus:ring-doce-success/50;
+    @apply btn bg-doce-success text-doce-dark shadow-subtle hover:shadow-medium hover:brightness-105 focus:ring-doce-success/50;
   }
 
   .btn-danger {
-    @apply btn bg-status-error text-white shadow-subtle
-           hover:shadow-medium hover:brightness-105
-           focus:ring-status-error/50;
+    @apply btn bg-status-error text-white shadow-subtle hover:shadow-medium hover:brightness-105 focus:ring-status-error/50;
+  }
+
+  /* Ghost button (Bakery UI inspired) */
+  .btn-ghost {
+    @apply btn bg-transparent text-doce-dark border-2 border-doce-dark hover:bg-doce-dark hover:text-white focus:ring-doce-dark/30;
+  }
+
+  /* Terracotta accent button */
+  .btn-terracotta {
+    @apply btn bg-doce-terracotta text-white shadow-md hover:shadow-lg hover:brightness-110 focus:ring-doce-terracotta/50;
   }
 
   /* ============================================
-     📦 CARDS
+     📦 CARDS (Enhanced - Bakery UI Inspired)
      ============================================ */
   .card {
-    @apply bg-white rounded shadow-subtle p-space-4
-           border border-doce-border/50;
+    @apply bg-white rounded shadow-md p-space-4 border border-doce-border/50;
   }
 
   .card-hover {
-    @apply card transition-shadow duration-micro
-           hover:shadow-medium;
+    @apply card transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
   }
 
   .card-accent {
     @apply card border-l-4 border-l-doce-primary;
   }
 
+  /* Gourmet card with terracotta accent on hover */
+  .card-gourmet {
+    @apply card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-doce-terracotta/50;
+  }
+
   /* ============================================
      📝 FORMS
      ============================================ */
   .input {
-    @apply w-full px-3 py-2 
-           bg-white border border-doce-border rounded-xs
-           text-doce-dark placeholder:text-doce-light
-           focus:border-doce-primary focus:ring-2 focus:ring-doce-primary/20
-           transition-all duration-micro;
+    @apply w-full px-3 py-2 bg-white border border-doce-border rounded-xs text-doce-dark placeholder:text-doce-light focus:border-doce-primary focus:ring-2 focus:ring-doce-primary/20 transition-all duration-micro;
   }
 
   .input-error {
-    @apply input border-status-error 
-           focus:border-status-error focus:ring-status-error/20;
+    @apply input border-status-error focus:border-status-error focus:ring-status-error/20;
   }
 
   .label {
@@ -98,10 +107,7 @@
   }
 
   .select {
-    @apply input appearance-none cursor-pointer
-           bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22%238b7355%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')]
-           bg-[length:20px] bg-[right_8px_center] bg-no-repeat
-           pr-10;
+    @apply input appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22%238b7355%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[right_8px_center] bg-no-repeat pr-10;
   }
 
   /* ============================================
@@ -112,8 +118,7 @@
   }
 
   .stat-card-icon {
-    @apply w-10 h-10 rounded-sm flex items-center justify-center
-           text-white font-bold text-lg;
+    @apply w-10 h-10 rounded-sm flex items-center justify-center text-white font-bold text-lg;
   }
 
   .stat-card-icon-primary {
@@ -132,13 +137,11 @@
      🔗 LINKS
      ============================================ */
   .link {
-    @apply text-doce-primary font-medium 
-           hover:text-doce-accent transition-colors duration-micro;
+    @apply text-doce-primary font-medium hover:text-doce-accent transition-colors duration-micro;
   }
 
   .link-subtle {
-    @apply text-doce-light hover:text-doce-dark 
-           transition-colors duration-micro;
+    @apply text-doce-light hover:text-doce-dark transition-colors duration-micro;
   }
 
   /* ============================================
@@ -149,8 +152,7 @@
   }
 
   .table th {
-    @apply text-xs font-semibold text-doce-light uppercase tracking-wider
-           py-3 px-4 border-b border-doce-border;
+    @apply text-xs font-semibold text-doce-light uppercase tracking-wider py-3 px-4 border-b border-doce-border;
   }
 
   .table td {
@@ -165,8 +167,7 @@
      🏷️ BADGES
      ============================================ */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 
-           rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
 
   .badge-primary {
@@ -198,17 +199,39 @@
 }
 
 @layer utilities {
+
   /* Spacing utilities using system */
-  .gap-system { @apply gap-space-2; }
-  .p-system { @apply p-space-4; }
-  .m-system { @apply m-space-2; }
+  .gap-system {
+    @apply gap-space-2;
+  }
+
+  .p-system {
+    @apply p-space-4;
+  }
+
+  .m-system {
+    @apply m-space-2;
+  }
 
   /* Text utilities */
-  .text-primary { @apply text-doce-primary; }
-  .text-accent { @apply text-doce-accent; }
-  .text-muted { @apply text-doce-light; }
+  .text-primary {
+    @apply text-doce-primary;
+  }
+
+  .text-accent {
+    @apply text-doce-accent;
+  }
+
+  .text-muted {
+    @apply text-doce-light;
+  }
 
   /* Background utilities */
-  .bg-page { @apply bg-doce-secondary/30; }
-  .bg-card { @apply bg-white; }
+  .bg-page {
+    @apply bg-doce-secondary/30;
+  }
+
+  .bg-card {
+    @apply bg-white;
+  }
 }

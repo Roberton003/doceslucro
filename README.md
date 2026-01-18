@@ -293,7 +293,7 @@ npm test
 ## 📞 Suporte
 
 Para dúvidas ou problemas:
-- 📧 Email: support@example.com
+- 📧 Email:roberto.m0010@gmail.com
 - 🐙 GitHub Issues: [Issues](https://github.com/Roberton003/doceslucro/issues)
 
 ## 📄 Licença

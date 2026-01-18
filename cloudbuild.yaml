@@ -1,0 +1,33 @@
+steps:
+  # 1. Build da Imagem Docker (Multi-stage)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/doces-giamor-app:$BUILD_ID', '-t', 'gcr.io/$PROJECT_ID/doces-giamor-app:latest', '.']
+
+  # 2. Push da Imagem para o Registry do Google
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/doces-giamor-app:$BUILD_ID']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/doces-giamor-app:latest']
+
+  # 3. Deploy no Cloud Run (Muda a imagem para a nova versão)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'doces-giamor-api'  # Nome do serviço novo
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/doces-giamor-app:$BUILD_ID'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+images:
+  - 'gcr.io/$PROJECT_ID/doces-giamor-app:$BUILD_ID'
+  - 'gcr.io/$PROJECT_ID/doces-giamor-app:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

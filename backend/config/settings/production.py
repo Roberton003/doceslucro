@@ -3,8 +3,8 @@ import dj_database_url
 
 # Production settings
 DEBUG = False
-# Forçar ALLOWED_HOSTS sem permitir override por variável de ambiente
-ALLOWED_HOSTS = ['doces-lucros-luz.onrender.com', 'doceslucro.onrender.com', '127.0.0.1', 'localhost']
+# Permitir override via variável de ambiente (importante para Cloud Run/GCP)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='localhost,127.0.0.1,.run.app')
 
 # Database
 DATABASES = {
@@ -21,9 +21,9 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_SECONDS = 31536000  # 1 ano
-SECURE_SSL_REDIRECT = True  # ✅ Ativar HTTPS redirect
-SESSION_COOKIE_SECURE = True  # ✅ Apenas HTTPS
-CSRF_COOKIE_SECURE = True  # ✅ Apenas HTTPS
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', cast=bool, default=False)  # Cloud Run handles HTTPS
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool, default=True)
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool, default=True)
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 
@@ -43,7 +43,7 @@ SESSION_COOKIE_AGE = 1209600  # 2 weeks
 # CSRF security
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv(), default='')
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv(), default='https://*.run.app,https://*.onrender.com')
 
 # CORS settings for production
 CORS_ALLOW_ALL_ORIGINS = False
@@ -61,9 +61,13 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 # Static files configuration
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
+# Add React build directory to STATICFILES_DIRS so collectstatic picks it up
+STATICFILES_DIRS = [
+    BASE_DIR / 'react_build'
+]
 
 # WhiteNoise configuration for serving static files efficiently
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Template configuration to serve React index.html from staticfiles
 TEMPLATES[0]['DIRS'] = [BASE_DIR / 'staticfiles']

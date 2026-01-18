@@ -7,17 +7,19 @@ export default {
   theme: {
     extend: {
       // ============================================
-      // 🎨 COLOR PALETTE (DocesGIamor Gastronômico)
+      // 🎨 COLOR PALETTE (DocesGIamor Gourmet - Bakery Inspired)
       // ============================================
       colors: {
         doce: {
           primary: '#d4a574',     // Bege gourmet - CTAs, accent
           secondary: '#f5e6d3',   // Creme claro - backgrounds
           accent: '#8b7355',      // Marrom quente - headers
+          terracotta: '#d4703f',  // NEW: Terracotta from Bakery UI
           success: '#a4d65e',     // Verde-menta - confirmations
-          dark: '#2c2416',        // Texto escuro
+          dark: '#1a1410',        // Texto escuro (darker)
           light: '#6d6d6d',       // Texto secundário
           border: '#e8dcc8',      // Bordas suaves
+          cream: '#faf6f1',       // Fundo cream mais claro
         },
         status: {
           success: '#a4d65e',
@@ -49,19 +51,22 @@ export default {
       },
 
       // ============================================
-      // 🌑 SHADOWS (Subtle Strategy)
+      // 🌑 SHADOWS (Enhanced - Bakery UI Inspired)
       // ============================================
       boxShadow: {
         'subtle': '0 4px 12px rgba(132, 115, 84, 0.10)',
         'medium': '0 8px 24px rgba(132, 115, 84, 0.15)',
         'strong': '0 12px 32px rgba(132, 115, 84, 0.20)',
+        'card': '0 4px 20px rgba(26, 20, 16, 0.08)',         // NEW: Card shadow
+        'card-hover': '0 12px 40px rgba(26, 20, 16, 0.15)',  // NEW: Card hover
+        'glow': '0 0 30px rgba(212, 112, 63, 0.25)',         // NEW: Terracotta glow
       },
 
       // ============================================
-      // 🔤 TYPOGRAPHY
+      // 🔤 TYPOGRAPHY (Inspired by Bakery UI)
       // ============================================
       fontFamily: {
-        'display': ['Georgia', 'serif'],
+        'display': ['"Playfair Display"', 'Georgia', 'serif'],  // Elegant serif for titles
         'body': ['Inter', 'system-ui', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },

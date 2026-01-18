@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 ChefLuz - Implementação de Segurança</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .step {
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+            padding-left: 20px;
+        }
+        
+        .step h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.pending {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .status.ok {
+            background: #28a745;
+            color: white;
+        }
+        
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+            list-style: none;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .time {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            gap: 20px;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+        }
+        
+        .timeline-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item .time {
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .alert.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px 5px 5px 0;
+            font-weight: bold;
+        }
+        
+        .button:hover {
+            background: #764ba2;
+        }
+        
+        .summary {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .button {
+                border: 1px solid #667eea;
+                background: white;
+                color: #667eea;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 ChefLuz v2.0</h1>
+            <p>Implementação de Segurança em Produção</p>
+        </div>
+        
+        <div class="content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1️⃣ Rotar GROQ_API_KEY</h3>
+                    <span class="time">5 min</span>
+                    <p style="color: #dc3545; font-weight: bold;">PENDENTE</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2️⃣ Verificar CORS</h3>
+                    <span class="time">2 min</span>
+                    <p style="color: #28a745; font-weight: bold;">OK ✓</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>3️⃣ Validar SSL</h3>
+                    <span class="time">2 min</span>
+                    <p style="color: #28a745; font-weight: bold;">OK ✓</p>
+                </div>
+            </div>
+            
+            <div class="alert alert.success">
+                <strong>✅ Total: 15 minutos para conclusão</strong>
+            </div>
+            
+            <!-- PASSO 1 -->
+            <div class="step">
+                <h2><span class="step-number">1</span> Rotacionar GROQ_API_KEY <span class="status pending">🔴 PENDENTE</span></h2>
+                
+                <p>A chave de API do Groq precisa ser renovada para segurança. Tempo: <span class="time">5 minutos</span></p>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">1.1 - Deletar chave antiga</h3>
+                <ol style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Acesse: <a href="https://console.groq.com/keys" target="_blank" class="button">console.groq.com/keys</a></li>
+                    <li>Localize a chave atual (formato: gsk_...)</li>
+                    <li>Clique no botão <strong>"Delete"</strong></li>
+                    <li>Confirme a exclusão</li>
+                </ol>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Visitei console.groq.com</li>
+                        <li>Localizei a chave atual</li>
+                        <li>Cliquei em Delete</li>
+                        <li>Confirmei a exclusão</li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">1.2 - Gerar nova chave</h3>
+                <ol style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>No mesmo console, clique em <strong>"Create API Key"</strong> (botão verde)</li>
+                    <li>Copie a chave completa</li>
+                    <li>Guarde em local seguro (última aparição)</li>
+                </ol>
+                
+                <div class="alert">
+                    <strong>⚠️ Importante:</strong> A chave só aparecerá uma vez! Copie agora!
+                </div>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Gerei nova chave</li>
+                        <li>Copiei a chave completa</li>
+                        <li>Guardei em local seguro</li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">1.3 - Atualizar em Render</h3>
+                <ol style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Acesse: <a href="https://dashboard.render.com" target="_blank" class="button">dashboard.render.com</a></li>
+                    <li>Selecione o serviço <strong>"doceslucro"</strong></li>
+                    <li>Vá para a aba <strong>"Environment"</strong></li>
+                    <li>Procure pela variável <strong>"GROQ_API_KEY"</strong></li>
+                    <li>Edite o valor</li>
+                    <li>Substitua o valor antigo pela nova chave</li>
+                    <li>Clique em <strong>"Save"</strong></li>
+                </ol>
+                
+                <div class="alert alert.success">
+                    <strong>✅ Render fará rebuild automático!</strong><br>
+                    Aguarde 5-10 minutos pela conclusão
+                </div>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Acessei dashboard.render.com</li>
+                        <li>Selecionei serviço doceslucro</li>
+                        <li>Localizei GROQ_API_KEY em Environment</li>
+                        <li>Atualizei com nova chave</li>
+                        <li>Cliquei em Save</li>
+                        <li>Render está fazendo rebuild</li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">1.4 - Validar funcionamento</h3>
+                <p>Após Render terminar rebuild (5-10 min), execute:</p>
+                
+                <div class="code-block">
+curl https://doceslucro.onrender.com/api/chat/health/ | jq .
+                </div>
+                
+                <p>Resultado esperado:</p>
+                
+                <div class="code-block">
+{
+  "status": "OK",
+  "database": "✅ Connected",
+  "recipes": "✅ 20 recipes",
+  "DEBUG": "False"
+}
+                </div>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Aguardei render terminar rebuild</li>
+                        <li>Executei curl para health check</li>
+                        <li>API retornou status OK</li>
+                        <li>Chat funcionando em produção</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PASSO 2 -->
+            <div class="step">
+                <h2><span class="step-number">2</span> Verificar CORS Configuration <span class="status ok">🟢 OK</span></h2>
+                
+                <p>A configuração de CORS já está implementada. Apenas verificar em Render. Tempo: <span class="time">2 minutos</span></p>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">2.1 - Verificar em Render Environment</h3>
+                <ol style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Acesse: <a href="https://dashboard.render.com" target="_blank" class="button">dashboard.render.com</a></li>
+                    <li>Selecione serviço <strong>"doceslucro"</strong></li>
+                    <li>Aba <strong>"Environment"</strong></li>
+                    <li>Procure por <strong>"CORS_ALLOWED_ORIGINS"</strong></li>
+                </ol>
+                
+                <div class="alert">
+                    <strong>ℹ️ Se não existir:</strong> Criar com valor: <br>
+                    <code>https://doceslucro.onrender.com</code>
+                </div>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Verifiquei CORS_ALLOWED_ORIGINS em Render</li>
+                        <li>Variável existe e contém: https://doceslucro.onrender.com</li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">2.2 - Implementação em Código</h3>
+                <p>Já implementado em <code>backend/config/settings/production.py</code>:</p>
+                
+                <div class="code-block">
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', ...)
+CORS_ALLOW_CREDENTIALS = True
+                </div>
+                
+                <div class="alert alert.success">
+                    <strong>✅ Status:</strong> Configuração correta de CORS em produção
+                </div>
+            </div>
+            
+            <!-- PASSO 3 -->
+            <div class="step">
+                <h2><span class="step-number">3</span> Validar SSL/HTTPS <span class="status ok">🟢 OK</span></h2>
+                
+                <p>Render já configura SSL automaticamente. Apenas validar. Tempo: <span class="time">2 minutos</span></p>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">3.1 - Verificar Certificado</h3>
+                <p>Execute no terminal:</p>
+                
+                <div class="code-block">
+curl -I https://doceslucro.onrender.com
+                </div>
+                
+                <p>Resultado esperado:</p>
+                
+                <div class="code-block">
+HTTP/2 200
+server: Caddy
+strict-transport-security: max-age=31536000
+x-frame-options: DENY
+x-content-type-options: nosniff
+                </div>
+                
+                <div class="checklist">
+                    <ul>
+                        <li>Executei curl -I https://doceslucro.onrender.com</li>
+                        <li>HTTP/2 200 OK ✓</li>
+                        <li>Headers de segurança presentes ✓</li>
+                        <li>Certificado válido ✓</li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin: 20px 0 10px 0; color: #667eea;">3.2 - Headers de Segurança Implementados</h3>
+                
+                <div class="code-block">
+✓ SECURE_SSL_REDIRECT = True
+✓ SECURE_HSTS_SECONDS = 31536000 (1 ano)
+✓ SESSION_COOKIE_SECURE = True
+✓ CSRF_COOKIE_SECURE = True
+✓ X_FRAME_OPTIONS = 'DENY'
+✓ SECURE_CONTENT_TYPE_NOSNIFF = True
+                </div>
+                
+                <div class="alert alert.success">
+                    <strong>✅ Status:</strong> Todos os headers de segurança implementados
+                </div>
+            </div>
+            
+            <!-- RESUMO FINAL -->
+            <div class="summary">
+                <h2 style="color: #667eea; margin-bottom: 15px;">📋 Resumo da Implementação</h2>
+                
+                <p><strong>Status Geral:</strong> 🟡 1 de 3 pendente</p>
+                
+                <table style="width: 100%; margin-top: 15px;">
+                    <tr style="background: #f8f9fa;">
+                        <th style="text-align: left; padding: 10px;">Item</th>
+                        <th style="text-align: center; padding: 10px;">Status</th>
+                        <th style="text-align: center; padding: 10px;">Tempo</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">GROQ_API_KEY Rotation</td>
+                        <td style="text-align: center; padding: 10px;">🔴 PENDENTE</td>
+                        <td style="text-align: center; padding: 10px;">5 min</td>
+                    </tr>
+                    <tr style="background: #f8f9fa;">
+                        <td style="padding: 10px;">CORS Configuration</td>
+                        <td style="text-align: center; padding: 10px;">🟢 OK</td>
+                        <td style="text-align: center; padding: 10px;">2 min</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">SSL/HTTPS Validation</td>
+                        <td style="text-align: center; padding: 10px;">🟢 OK</td>
+                        <td style="text-align: center; padding: 10px;">2 min</td>
+                    </tr>
+                </table>
+                
+                <p style="margin-top: 15px;"><strong>⏱️ Total Pendente:</strong> 5 minutos (+ 10 min de rebuild automático)</p>
+            </div>
+            
+            <!-- PRÓXIMOS PASSOS -->
+            <div class="step">
+                <h2 style="color: #28a745;">✅ Próximos Passos</h2>
+                
+                <ol style="margin-left: 20px;">
+                    <li><strong>Agora:</strong> Rotar GROQ_API_KEY (ver Passo 1)</li>
+                    <li><strong>Após rebuild (10 min):</strong> Validar com curl health check</li>
+                    <li><strong>24h depois:</strong> Monitorar logs em produção</li>
+                    <li><strong>Próxima semana:</strong> Setup de backups e alertas</li>
+                </ol>
+            </div>
+            
+            <!-- BOTÕES DE AÇÃO -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://console.groq.com/keys" target="_blank" class="button" style="background: #dc3545;">
+                    🔴 Começar: Rotar GROQ_API_KEY
+                </a>
+                <a href="https://dashboard.render.com" target="_blank" class="button">
+                    📊 Ir para Render Dashboard
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>ChefLuz v2.0</strong> | 26 de outubro de 2025</p>
+            <p>Documentação de segurança - Local use only</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
+                Arquivos: SECURITY_SETUP_PRODUCAO.md | GUIA_IMPLEMENTACAO_SEGURANCA.md | RESUMO_SEGURANCA_RAPIDO.md
+            </p>
+        </div>
+    </div>
+</body>
+</html>

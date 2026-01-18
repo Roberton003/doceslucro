@@ -1,0 +1,6 @@
+project_id        = "doces-giamor-prod" # NOVO PROJETO INDEPENDENTE
+region            = "us-central1"
+service_name      = "doces-giamor-api"
+db_password       = "CHANGE_ME_SECURE_PASSWORD" 
+django_secret_key = "CHANGE_ME_DJANGO_SECRET"
+container_image   = "gcr.io/doces-giamor-prod/doces-giamor:latest" # Note o ID do projeto aqui também
